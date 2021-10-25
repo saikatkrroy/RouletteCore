@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: '5cd0d401-00d2-4de8-bbb5-6b7a0da00134'
   imageRepository: 'saikatkrroyroulettecore'
   containerRegistry: 'roulettecorecontainerregistry.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/RouletteCore/RouletteCore/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/RouletteCore/Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
