@@ -14,6 +14,9 @@ variables:
   imageRepository: 'saikatkrroyroulettecore'
   containerRegistry: 'roulettecorecontainerregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/RouletteCore/Dockerfile'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
