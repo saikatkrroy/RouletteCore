@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: saikatkrroyroulettecore 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: saikatkrroyroulettecore
+  template:
+    metadata:
+      labels:
+        app: saikatkrroyroulettecore 
+    spec:
+      containers:
+        - name: saikatkrroyroulettecore 
+          image: roulettecorecontainerregistry.azurecr.io/saikatkrroyroulettecore
+          ports:
+          - containerPort: 80
