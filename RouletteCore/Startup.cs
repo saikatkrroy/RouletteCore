@@ -15,6 +15,7 @@ using Roulette.DataAccess.Services;
 using Roulette.DataAccess.Models;
 using Roulette.Security.Interfaces;
 using Roulette.Security.Services;
+using System.IO;
 
 namespace RouletteCore
 {
@@ -25,7 +26,7 @@ namespace RouletteCore
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            var builder = new ConfigurationBuilder()
+            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddEnvironmentVariables();
             Configuration = builder.Build();
