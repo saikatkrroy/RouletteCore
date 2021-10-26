@@ -13,6 +13,9 @@ COPY ["RouletteCore.Security/RouletteCore.Security.csproj", "RouletteCore.Securi
 RUN dotnet restore "RouletteCore/RouletteCore.csproj"
 COPY . .
 WORKDIR "/src/RouletteCore.DataAccess"
+RUN dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+RUN dotnet add package Microsoft.EntityFrameworkCore.Design
+RUN dotnet add package Microsoft.EntityFrameworkCore
 RUN Update-Database
 RUN dotnet build "RouletteCore.csproj" -c Release -o /app/build
 
