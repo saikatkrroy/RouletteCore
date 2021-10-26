@@ -8,8 +8,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
 COPY ["RouletteCore.csproj", "RouletteCore/"]
-COPY ["../RouletteCore.DataAccess.csproj", "RouletteCore.DataAccess/"]
-COPY ["../RouletteCore.Security.csproj", "RouletteCore.Security/"]
+COPY ["./RouletteCore.DataAccess.csproj", "RouletteCore.DataAccess/"]
+COPY ["./RouletteCore.Security.csproj", "RouletteCore.Security/"]
 RUN dotnet restore "RouletteCore/RouletteCore.csproj"
 COPY . .
 WORKDIR "/src/RouletteCore"
