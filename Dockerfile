@@ -12,7 +12,7 @@ COPY ["RouletteCore.DataAccess/RouletteCore.DataAccess.csproj", "RouletteCore.Da
 COPY ["RouletteCore.Security/RouletteCore.Security.csproj", "RouletteCore.Security/"]
 RUN dotnet restore "RouletteCore/RouletteCore.csproj"
 COPY . .
-WORKDIR "/src/RouletteCore.DataAccess"
+WORKDIR "/src/RouletteCore"
 
 #RUN dotnet ef database update
 RUN dotnet build "RouletteCore.csproj" -c Release -o /app/build
