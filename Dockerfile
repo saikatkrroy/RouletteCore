@@ -13,7 +13,8 @@ COPY ["RouletteCore.Security/RouletteCore.Security.csproj", "RouletteCore.Securi
 RUN dotnet restore "RouletteCore/RouletteCore.csproj"
 COPY . .
 WORKDIR "/src/RouletteCore"
-RUN Update-Database
+
+#RUN dotnet ef database update
 RUN dotnet build "RouletteCore.csproj" -c Release -o /app/build
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS migration
