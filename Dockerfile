@@ -13,24 +13,12 @@ COPY ["RouletteCore.Security/RouletteCore.Security.csproj", "RouletteCore.Securi
 RUN dotnet restore "RouletteCore/RouletteCore.csproj"
 COPY . .
 WORKDIR "/src/RouletteCore"
-
-#RUN dotnet ef database update
 RUN dotnet build "RouletteCore.csproj" -c Release -o /app/build
-
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS migration
-WORKDIR /src
-COPY . .
-RUN dotnet restore "RouletteCore.DataAccess/RouletteCore.DataAccess.csproj"
-COPY . .
-WORKDIR "/src/RouletteCore.DataAccess"
-RUN dotnet build "RouletteCore.DataAccess.csproj" -c Release -o /app/migration
 
 FROM build AS publish
 RUN dotnet publish "RouletteCore.csproj" -c Release -o /app/publish
 
 FROM base AS final
-WORKDIR /migration
-COPY --from=migration /app/migration .
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "RouletteCore.dll"]
