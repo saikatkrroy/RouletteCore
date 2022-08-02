@@ -13,3 +13,6 @@ services:
         environment:
             SA_PASSWORD: "Your_password123"
             ACCEPT_EULA: "Y"
+            
+options:
+  logging: CLOUD_LOGGING_ONLY
